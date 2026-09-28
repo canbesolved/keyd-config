@@ -38,6 +38,7 @@ Optimized layout designed to minimize hand movement and maximize productivity.
 **Media & Brightness**
 - `H` → Mute Audio
 - `J`, `K` → Volume Down, Volume Up
+- `P` → Play/Pause
 - `L`, `;` → Brightness Down, Brightness Up
 
 ## Requirements
