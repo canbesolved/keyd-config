@@ -2,6 +2,10 @@
 
 Optimized layout designed to minimize hand movement and maximize productivity.
 
+![Keyboard layout](assets/layout.svg)
+
+*The bottom row is drawn as a generic laptop layout and may not match your keyboard exactly.*
+
 ## Layers
 
 - **HRM**: Modifiers (Meta, Alt, Ctrl, Shift) are placed directly on the home row (ASDF / JKL;) via dual-function keys. Tap for the character, hold for the modifier.
@@ -54,10 +58,20 @@ Optimized layout designed to minimize hand movement and maximize productivity.
    ```bash
    sudo cp default.conf /etc/keyd/
    ```
-3. Reloda the `keyd` config:
+3. Reload the `keyd` config:
    ```bash
    sudo keyd restart
    ```
+
+## Regenerating the layout image
+
+`assets/layout.svg` is generated from `default.conf` with [keymap-drawer](https://github.com/caksoylar/keymap-drawer). After changing the config, run:
+
+```bash
+uv run scripts/draw_layout.py
+```
+
+Cursor and Claude Code hooks in this repo do this automatically when an agent edits `default.conf`. See [AGENTS.md](AGENTS.md) for details.
 
 ## License
 
