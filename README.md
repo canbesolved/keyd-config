@@ -1,6 +1,6 @@
 # keyd config
 
-Optimized layout designed to minimize hand movement and maximize productivity.
+Optimized layout designed to minimize hand movement, reduce wrist strain, improve ergonomics, and maximize productivity.
 
 ## Layers
 
