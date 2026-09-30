@@ -5,12 +5,13 @@ Optimized layout designed to minimize hand movement, reduce wrist strain, improv
 ## Layers
 
 - **HRM**: Modifiers (Meta, Alt, Ctrl, Shift) are placed directly on the home row (ASDF / JKL;) via dual-function keys. Tap for the character, hold for the modifier.
-- **Caps Layer**: Turns `CapsLock` layer on hold or `Escape` when tapped
-- **Right Alt (AltGr)**: Uses `Right Alt` on hold to access KDE desktop switching, media controls, and system actions
+- **CapsLock**: Acts as `Ctrl` on hold and `Escape` when tapped
+- **Space Layer**: Hold `Space` to access navigation, editing and shortcut keys; tap for a regular space
+- **Right Alt (AltGr)**: Uses `Right Alt` on hold to access media controls and system actions
 
 *Note: HRM use a custom timeout. A tap (< 150ms) registers as a character. Holding (> 200ms) or pressing in combination with another key registers as the modifier.*
 
-## Caps Layer
+## Space Layer
 
 **Navigation & Editing**
 - `H`, `J`, `K`, `L` → `Left`, `Down`, `Up`, `Right`
@@ -19,19 +20,21 @@ Optimized layout designed to minimize hand movement, reduce wrist strain, improv
 - `[` → `Delete`
 - `;` → `Enter`
 
-**Modifiers (Left Hand)**
-- `A` → `Alt`
-- `S` → `Shift`
-- `D` → `Ctrl`
+**Browser, Tabs, Clipboard**
+- `Q` → `Meta + ]` (Brave: tab search panel)
+- `W` → `Ctrl + W` (close tab)
+- `C`, `V` → `Ctrl + C`, `Ctrl + V` (copy, paste)
 
 **System / Misc**
-- `F` → `Meta + Space` (change keyboard layout)
+- `A` → `Meta + Space` (change keyboard layout)
 - `M` → `ScrollLock` (voice input using voxtype)
+
+**Symbols**
+- `F` → `-` (hyphen)
 
 ## RightAlt layer
 
-**Workspace & System (KDE)**
-- `A`, `S`, `D`, `F` → `Meta + F1-F4` (switch Desktops 1-4)
+**System**
 - `O` → `Meta + L` (lock screen)
 - `/` → `Meta + /` (suspend)
 
@@ -39,13 +42,14 @@ Optimized layout designed to minimize hand movement, reduce wrist strain, improv
 - `H` → Mute Audio
 - `J`, `K` → Volume Down, Volume Up
 - `P` → Play/Pause
+- `]`, `\` → Previous Song, Next Song
 - `L`, `;` → Brightness Down, Brightness Up
 
 ## Requirements
 
 - Linux environment
 - [keyd](https://github.com/rvaiya/keyd)
-- KDE Plasma (for desktop switching and lock screen shortcuts)
+- KDE Plasma (for lock screen and suspend shortcuts)
 
 ## Installation
 
