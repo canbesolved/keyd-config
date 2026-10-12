@@ -1,0 +1,13 @@
+# Intermediate files for the layout image (scripts/draw_layout.py writes them)
+build/
+
+# Python / uv
+__pycache__/
+*.py[cod]
+.venv/
+
+# Local agent settings
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
