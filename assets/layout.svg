@@ -369,16 +369,15 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(175, 252)" class="key keypos-55">
 <rect rx="6" ry="6" x="-33" y="-26" width="66" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Alt+Spc</text>
+<text x="0" y="0" class="key tap">Run</text>
 <text x="0" y="24" class="key hold">Alt</text>
 <text x="0" y="-24" class="key shifted">Alt+Spc</text>
 </g>
 <g transform="translate(385, 252)" class="key keypos-56">
 <rect rx="6" ry="6" x="-173" y="-26" width="346" height="52" class="key"/>
 <text x="0" y="0" class="key tap">Space</text>
-<a href="#Space-layer">
-<text x="0" y="24" class="key hold layer-activator"><tspan style="font-size: 64%">Space layer</tspan></text>
-</a></g>
+<text x="0" y="24" class="key hold">Space L</text>
+</g>
 <g transform="translate(595, 252)" class="key keypos-57">
 <rect rx="6" ry="6" x="-33" y="-26" width="66" height="52" class="key"/>
 <text x="0" y="0" class="key tap">AltGr</text>
@@ -398,8 +397,8 @@ path.combo { stroke: #7f7f7f; }
 </g>
 </g>
 </g>
-<g transform="translate(30, 336)" class="layer-Space layer">
-<text x="0" y="28" class="label" id="Space-layer">Space layer:</text>
+<g transform="translate(30, 336)" class="layer-Space layer (hold Space)">
+<text x="0" y="28" class="label" id="Space-layer-hold-Space">Space layer (hold Space):</text>
 <g transform="translate(0, 56)">
 <g transform="translate(28, 28)" class="key keypos-0">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -448,12 +447,12 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(112, 84)" class="key keypos-15">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Meta+]</text>
+<text x="0" y="0" class="key tap">Tabs</text>
 <text x="0" y="-24" class="key shifted">Meta+]</text>
 </g>
 <g transform="translate(168, 84)" class="key keypos-16">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctrl+W</text>
+<text x="0" y="0" class="key tap">Close</text>
 <text x="0" y="-24" class="key shifted">Ctrl+W</text>
 </g>
 <g transform="translate(224, 84)" class="key keypos-17">
@@ -549,12 +548,12 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(266, 196)" class="key keypos-44">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctrl+C</text>
+<text x="0" y="0" class="key tap">Copy</text>
 <text x="0" y="-24" class="key shifted">Ctrl+C</text>
 </g>
 <g transform="translate(322, 196)" class="key keypos-45">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">Ctrl+V</text>
+<text x="0" y="0" class="key tap">Paste</text>
 <text x="0" y="-24" class="key shifted">Ctrl+V</text>
 </g>
 <g transform="translate(378, 196)" class="key keypos-46">

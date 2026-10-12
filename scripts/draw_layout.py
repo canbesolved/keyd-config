@@ -117,25 +117,26 @@ SHORTCUT_KEY_LABELS = {"space": "Spc", "backspace": "Bksp", "delete": "Del"}
 # Friendly names for shortcut combos; the shortcut itself is shown small on top.
 # keymap-drawer wraps legends on spaces, so keep each name a single word.
 COMBO_LABELS = {
-    "M-f1": "Desk1",
-    "M-f2": "Desk2",
-    "M-f3": "Desk3",
-    "M-f4": "Desk4",
     "M-l": "Lock",
     "M-/": "Susp",
     "M-space": "Lang",
+    "A-space": "Run",
+    "M-]": "Tabs",
+    "C-w": "Close",
+    "C-c": "Copy",
+    "C-v": "Paste",
 }
 
 # Hold legends for keyd layers (sections other than [main]).
 LAYER_HOLD_LABELS = {
-    "caps_layer": "Caps L",
+    "space_layer": "Space L",
     "altgr_layer": "AltGr L",
 }
 
 # Diagram headings; unknown sections get an auto-generated title.
 LAYER_TITLES = {
     "main": "Base (tap = key, hold = modifier)",
-    "caps_layer": "Caps layer (hold CapsLock, tap = Esc)",
+    "space_layer": "Space layer (hold Space)",
     "altgr_layer": "AltGr layer (hold Right Alt)",
 }
 
