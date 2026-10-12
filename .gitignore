@@ -1,3 +1,6 @@
+# Reference files
+reference/
+
 # Intermediate files for the layout image (scripts/draw_layout.py writes them)
 build/
 
