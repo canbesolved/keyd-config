@@ -24,15 +24,30 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "default.conf"
 BUILD = ROOT / "build"
-LAYOUT_JSON = BUILD / "laptop60.json"
+LAYOUT_JSON = BUILD / "thinkpad14.json"
 KEYMAP_YAML = BUILD / "keymap.yaml"
 OUTPUT_SVG = ROOT / "assets" / "layout.svg"
 
 MAX_LABEL_LEN = 6
 
-# 60% ANSI laptop layout, row by row: (keyd key name, width, base legend).
-# The bottom row is generic and may not match the physical keyboard exactly.
-ROWS: list[list[tuple[str, float, str]]] = [
+# Lenovo ThinkPad 14 (US ANSI) keyboard. Every key is a tuple
+# (keyd key name, width, base legend) with an optional height and an optional
+# absolute (x, y) position for keys that do not follow the row flow.
+FN_W = 15 / 17  # the function row has 17 narrower keys over the 15-unit width
+FN_H = 0.7
+ROW_Y = [0.0, 0.85, 1.85, 2.85, 3.85, 4.85]
+ARROW_X = 12.0
+ARROW_H = 0.5
+
+ROWS: list[list[tuple]] = [
+    [("esc", FN_W, "Esc", FN_H)]
+    + [(f"f{n}", FN_W, f"F{n}", FN_H) for n in range(1, 13)]
+    + [
+        ("home", FN_W, "Home", FN_H),
+        ("end", FN_W, "End", FN_H),
+        ("insert", FN_W, "Ins", FN_H),
+        ("delete", FN_W, "Del", FN_H),
+    ],
     [("grave", 1, "`")]
     + [(c, 1, c) for c in "1234567890"]
     + [("minus", 1, "-"), ("equal", 1, "="), ("backspace", 2, "Bksp")],
@@ -46,14 +61,21 @@ ROWS: list[list[tuple[str, float, str]]] = [
     + [(c, 1, c.upper()) for c in "zxcvbnm"]
     + [("comma", 1, ","), ("dot", 1, "."), ("slash", 1, "/"), ("rightshift", 2.75, "Shift")],
     [
+        ("fn", 1.25, "Fn"),
         ("leftcontrol", 1.25, "Ctrl"),
         ("leftmeta", 1.25, "Meta"),
         ("leftalt", 1.25, "Alt"),
-        ("space", 6.25, ""),
-        ("rightalt", 1.25, "AltGr"),
-        ("rightmeta", 1.25, "Meta"),
-        ("compose", 1.25, "Menu"),
-        ("rightcontrol", 1.25, "Ctrl"),
+        ("space", 4, ""),
+        ("rightalt", 1, "AltGr"),
+        ("sysrq", 1, "PrtSc"),
+        ("rightcontrol", 1, "Ctrl"),
+        # Inverted-T arrow cluster: PgUp / Up / PgDn above Left / Down / Right.
+        ("pageup", 1, "PgUp", ARROW_H, ARROW_X, ROW_Y[5]),
+        ("up", 1, "↑", ARROW_H, ARROW_X + 1, ROW_Y[5]),
+        ("pagedown", 1, "PgDn", ARROW_H, ARROW_X + 2, ROW_Y[5]),
+        ("left", 1, "←", ARROW_H, ARROW_X, ROW_Y[5] + ARROW_H),
+        ("down", 1, "↓", ARROW_H, ARROW_X + 1, ROW_Y[5] + ARROW_H),
+        ("right", 1, "→", ARROW_H, ARROW_X + 2, ROW_Y[5] + ARROW_H),
     ],
 ]
 
@@ -142,8 +164,7 @@ LAYER_TITLES = {
 
 SKIPPED_SECTIONS = {"ids", "global"}
 
-BASE_LABELS = {name: label for row in ROWS for name, _, label in row}
-KEY_ORDER = [name for row in ROWS for name, _, _ in row]
+BASE_LABELS = {spec[0]: spec[2] for row in ROWS for spec in row}
 
 
 @dataclass
@@ -242,7 +263,7 @@ def parse_config(text: str) -> dict[str, dict[str, Legend]]:
             continue
         key = normalize_key(mapping.group(1))
         if key not in BASE_LABELS:
-            warn(f"[{current}] {key} is not on the drawn 60% layout, skipped")
+            warn(f"[{current}] {key} is not on the drawn keyboard, skipped")
             continue
         sections[current][key] = parse_action(mapping.group(2))
     return sections
@@ -273,7 +294,7 @@ def build_layers(sections: dict[str, dict[str, Legend]]) -> dict[str, list[list]
         rows = []
         for row in ROWS:
             drawn = []
-            for key, _, base in row:
+            for key, _, base, *_ in row:
                 if key in mappings:
                     drawn.append(to_yaml_key(mappings[key]))
                 elif section != "main" and key in activators.get(section, []):
@@ -287,11 +308,21 @@ def build_layers(sections: dict[str, dict[str, Legend]]) -> dict[str, list[list]
 
 def physical_layout() -> dict:
     keys = []
-    for y, row in enumerate(ROWS):
+    for row_y, row in zip(ROW_Y, ROWS):
         x = 0.0
-        for _, w, _ in row:
-            keys.append({"x": x, "y": y, "w": w} if w != 1 else {"x": x, "y": y})
-            x += w
+        for _, w, _, *geometry in row:
+            h = geometry[0] if geometry else 1
+            if len(geometry) == 3:
+                key_x, key_y = geometry[1:]
+            else:
+                key_x, key_y = x, row_y
+                x += w
+            key = {"x": round(key_x, 3), "y": round(key_y, 3)}
+            if w != 1:
+                key["w"] = round(w, 3)
+            if h != 1:
+                key["h"] = h
+            keys.append(key)
     return {"layouts": {"LAYOUT": {"layout": keys}}}
 
 
