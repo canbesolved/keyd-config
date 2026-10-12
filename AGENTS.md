@@ -11,11 +11,14 @@ The layout has three parts:
 
 - **Base (`[main]`)**: home-row mods (tap for the letter, hold for
   Meta/Alt/Ctrl/Shift on `A S D F` and `J K L ;`), `CapsLock` = Esc on tap /
-  Caps layer on hold, `Right Alt` = AltGr layer on hold.
-- **`[caps_layer]`**: vim-style arrows, page up/down, Enter/Backspace/Delete,
-  left-hand modifiers, keyboard-layout switch, dictation toggle.
-- **`[altgr_layer]`**: KDE desktop switching, volume, media, brightness, lock
-  and suspend.
+  Ctrl on hold, `Left Alt` = KRunner (`Alt+Space`) on tap / Alt on hold,
+  `Space` = space layer on hold, `Right Alt` = AltGr layer on hold,
+  `SysRq` = keyboard-layout switch (`Meta+Space`).
+- **`[space_layer]`**: vim-style arrows, page up/down,
+  Enter/Backspace/Delete, browser tab and clipboard shortcuts, dictation
+  toggle, hyphen.
+- **`[altgr_layer]`**: volume, media, brightness, PrintScreen, lock and
+  suspend.
 
 ## Files
 
@@ -27,6 +30,8 @@ The layout has three parts:
 | `scripts/draw_layout.py` | Generates `assets/layout.svg` from `default.conf` |
 | `scripts/hooks/regenerate-layout.sh` | Hook that reruns the generator |
 | `.cursor/hooks.json`, `.claude/settings.json` | Cursor and Claude hook setup |
+| `.cursor/rules/keyd-repo-docs.mdc` | Cursor rule: read the project docs |
+| `TODO.md` | Planned config changes as a checkbox list |
 | `build/` | Intermediate files (`keymap.yaml`, `laptop60.json`), gitignored |
 
 ## Editing `default.conf`
