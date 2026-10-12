@@ -39,6 +39,7 @@ Optimized layout designed to minimize hand movement, reduce wrist strain, improv
 ## RightAlt layer
 
 **System**
+- `SysRq` → `PrintScreen` (screenshot)
 - `O` → `Meta + L` (lock screen)
 - `/` → `Meta + /` (suspend)
 
