@@ -69,7 +69,7 @@ Optimized layout designed to minimize hand movement, reduce wrist strain, improv
    ```
 3. Reload the `keyd` config:
    ```bash
-   sudo keyd restart
+   sudo keyd reload
    ```
 
 ## Regenerating the layout image
