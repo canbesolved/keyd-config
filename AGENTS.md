@@ -43,6 +43,9 @@ The layout has three parts:
   so the text and the picture agree.
 - The image must be regenerated and committed together with the config change
   (see below).
+- Update `scripts/draw_layout.py` when `default.conf` changes: add or rename
+  entries in `ACTION_LABELS`, `COMBO_LABELS`, `LAYER_HOLD_LABELS` and
+  `LAYER_TITLES` so the picture does not show stale or raw labels.
 
 ## Keyboard image generation
 
