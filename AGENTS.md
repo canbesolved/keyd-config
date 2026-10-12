@@ -59,3 +59,9 @@ The bottom row is a generic laptop layout and may not match the physical keyboar
 ### Hooks
 
 Both Cursor (`afterFileEdit`) and Claude Code (`PostToolUse` on `Edit|Write|MultiEdit`) run `scripts/hooks/regenerate-layout.sh`. It regenerates the image only when `default.conf` or `scripts/draw_layout.py` was edited and never blocks the edit. Edits made outside an agent do not trigger it; run the generator yourself before committing.
+
+## Commits and pull requests
+
+- Do not add a `Co-Authored-By` trailer to commit messages.
+- Do not add a "Generated with Claude Code" footer (or any similar
+  agent attribution) to pull request descriptions.
