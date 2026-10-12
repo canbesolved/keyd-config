@@ -61,9 +61,9 @@ cannot parse keyd configs, so `scripts/draw_layout.py` does it:
    top, plain keys get short labels. The key that activates a layer is
    highlighted as held in that layer.
 3. Writes a Lenovo ThinkPad 14 (US ANSI) physical layout
-   (`build/thinkpad14.json`, QMK `info.json` format) and the keymap (`build/keymap.yaml`), then runs
-   `keymap draw` to produce `assets/layout.svg`. The SVG follows the viewer's
-   light/dark theme.
+   (`build/thinkpad14.json`, QMK `info.json` format) and the keymap
+   (`build/keymap.yaml`), then runs `keymap draw` to produce
+   `assets/layout.svg`. The SVG follows the viewer's light/dark theme.
 
 Regenerate manually with:
 
