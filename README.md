@@ -46,7 +46,7 @@ registers as the modifier.*
 - `Q` → `Meta + ]` (Brave: tab search panel)
 - `W` → `Ctrl + W` (close tab)
 - `T` → `Alt + F4` (terminate window)
-- `C`, `V` → `Ctrl + C`, `Ctrl + V` (copy, paste)
+- `C`, `V`, `X` → `Ctrl + C`, `Ctrl + V`, `Ctrl + X` (copy, paste, cut)
 
 ### System / Misc
 
@@ -109,7 +109,7 @@ edits `default.conf`. See [AGENTS.md](AGENTS.md) for details.
 - [x] Add Home, End hotkeys to space_layer
 - [x] Add Alt+F4 hotkey to space_layer
 - [x] Add PrtScn hotkey to altgr_layer
-- [ ] Add Cut function to space_layer
+- [x] Add Cut function to space_layer
 - [ ] Add Hyphen to space_layer
 
 ## License
