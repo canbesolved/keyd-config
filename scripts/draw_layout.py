@@ -163,6 +163,7 @@ COMBO_LABELS = {
     "A-f4": "Term",
     "C-c": "Copy",
     "C-v": "Paste",
+    "C-x": "Cut",
 }
 
 # Hold legends for keyd layers (sections other than [main]).
