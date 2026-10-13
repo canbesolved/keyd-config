@@ -160,6 +160,7 @@ COMBO_LABELS = {
     "A-space": "Run",
     "M-]": "Tabs",
     "C-w": "Close",
+    "A-f4": "Term",
     "C-c": "Copy",
     "C-v": "Paste",
 }
