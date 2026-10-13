@@ -136,6 +136,8 @@ ACTION_LABELS = {
     "print": "PrtSc",
     "capslock": "Caps",
     "scrolllock": "ScrLk",
+    "scrolldown": "ScrDn",
+    "scrollup": "ScrUp",
     "mute": "Mute",
     "volumedown": "Vol−",
     "volumeup": "Vol+",
@@ -238,6 +240,8 @@ def parse_action(action: str) -> Legend:
         if name == "overloadi":
             tap, hold = parse_action(args[0]), parse_action(args[1])
             return Legend(t=tap.t, s=tap.s, h=hold.h or hold.t, hold_target=hold.hold_target)
+        if name == "macro2":
+            return parse_action(args[2])
         if name == "layer":
             return Legend(t=hold_label(args[0]))
         if name == "oneshot":
