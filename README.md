@@ -36,7 +36,7 @@ registers as the modifier.*
 ### Navigation & Editing
 
 - `H`, `J`, `K`, `L` → `Left`, `Down`, `Up`, `Right`
-- `U`, `I` → `Page Up`, `Page Down`
+- `A`, `S`, `D`, `F` → `Home`, `Page Up`, `Page Down`, `End`
 - `O` → `Backspace`
 - `[` → `Delete`
 - `;` → `Enter`
@@ -50,10 +50,6 @@ registers as the modifier.*
 ### System / Misc
 
 - `M` → `ScrollLock` (voice input using voxtype)
-
-### Symbols
-
-- `F` → `-` (hyphen)
 
 ## RightAlt layer
 
