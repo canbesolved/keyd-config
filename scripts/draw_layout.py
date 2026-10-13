@@ -24,36 +24,71 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = ROOT / "default.conf"
 BUILD = ROOT / "build"
-LAYOUT_JSON = BUILD / "laptop60.json"
+LAYOUT_JSON = BUILD / "thinkpad14.json"
 KEYMAP_YAML = BUILD / "keymap.yaml"
 OUTPUT_SVG = ROOT / "assets" / "layout.svg"
 
 MAX_LABEL_LEN = 6
 
-# 60% ANSI laptop layout, row by row: (keyd key name, width, base legend).
-# The bottom row is generic and may not match the physical keyboard exactly.
-ROWS: list[list[tuple[str, float, str]]] = [
+# Lenovo ThinkPad T14 Gen 4 (US ANSI) keyboard, measured from a photo. Every
+# key is a tuple (keyd key name, width, base legend) with an optional height
+# and an optional absolute (x, y) position for keys that do not follow the row
+# flow. The board is 14.6 units wide.
+FN_H = 0.7
+FN_SCALE = 0.974  # photo x positions were measured against a 15-unit board
+ROW_Y = [0.0, 0.85, 1.85, 2.85, 3.85, 4.85]
+ARROW_X = 12.0
+ARROW_H = 0.5
+
+# Function row: Esc, three groups of four F keys, then Home/End/Insert/Delete.
+FN_ROW = [
+    ("esc", 1.1, "Esc", 0.0),
+    *[
+        (f"f{n}", 0.78, f"F{n}", x)
+        for n, x in enumerate(
+            [1.25, 2.07, 2.88, 3.7, 4.6, 5.42, 6.24, 7.06, 8.0, 8.82, 9.63, 10.45],
+            start=1,
+        )
+    ],
+    ("home", 0.8, "Home", 11.4),
+    ("end", 0.8, "End", 12.2),
+    ("insert", 0.8, "Ins", 13.05),
+    ("delete", 1.15, "Del", 13.85),
+]
+
+ROWS: list[list[tuple]] = [
+    [
+        (name, round(w * FN_SCALE, 3), label, FN_H, round(x * FN_SCALE, 3), ROW_Y[0])
+        for name, w, label, x in FN_ROW
+    ],
     [("grave", 1, "`")]
     + [(c, 1, c) for c in "1234567890"]
-    + [("minus", 1, "-"), ("equal", 1, "="), ("backspace", 2, "Bksp")],
-    [("tab", 1.5, "Tab")]
+    + [("minus", 1, "-"), ("equal", 1, "="), ("backspace", 1.6, "Bksp")],
+    [("tab", 1.4, "Tab")]
     + [(c, 1, c.upper()) for c in "qwertyuiop"]
-    + [("leftbrace", 1, "["), ("rightbrace", 1, "]"), ("backslash", 1.5, "\\")],
-    [("capslock", 1.75, "Caps")]
+    + [("leftbrace", 1, "["), ("rightbrace", 1, "]"), ("backslash", 1.2, "\\")],
+    [("capslock", 1.6, "Caps")]
     + [(c, 1, c.upper()) for c in "asdfghjkl"]
-    + [("semicolon", 1, ";"), ("apostrophe", 1, "'"), ("enter", 2.25, "Enter")],
-    [("leftshift", 2.25, "Shift")]
+    + [("semicolon", 1, ";"), ("apostrophe", 1, "'"), ("enter", 2, "Enter")],
+    [("leftshift", 2.2, "Shift")]
     + [(c, 1, c.upper()) for c in "zxcvbnm"]
-    + [("comma", 1, ","), ("dot", 1, "."), ("slash", 1, "/"), ("rightshift", 2.75, "Shift")],
+    + [("comma", 1, ","), ("dot", 1, "."), ("slash", 1, "/"), ("rightshift", 2.4, "Shift")],
     [
-        ("leftcontrol", 1.25, "Ctrl"),
-        ("leftmeta", 1.25, "Meta"),
-        ("leftalt", 1.25, "Alt"),
-        ("space", 6.25, ""),
-        ("rightalt", 1.25, "AltGr"),
-        ("rightmeta", 1.25, "Meta"),
-        ("compose", 1.25, "Menu"),
-        ("rightcontrol", 1.25, "Ctrl"),
+        ("fn", 1.03, "Fn"),
+        ("leftcontrol", 1.26, "Ctrl"),
+        ("leftmeta", 1, "Meta"),
+        ("leftalt", 1, "Alt"),
+        ("space", 5.06, ""),
+        ("rightalt", 0.9, "AltGr"),
+        ("sysrq", 0.89, "PrtSc"),
+        ("rightcontrol", 0.86, "Ctrl"),
+        # Inverted-T arrow cluster: PgUp / Up / PgDn above Left / Down / Right.
+        ("pageup", 0.77, "PgUp", ARROW_H, ARROW_X, ROW_Y[5]),
+        ("up", 0.75, "↑", ARROW_H, ARROW_X + 0.93, ROW_Y[5]),
+        ("pagedown", 0.77, "PgDn", ARROW_H, ARROW_X + 1.83, ROW_Y[5]),
+        ("left", 0.77, "←", ARROW_H, ARROW_X, ROW_Y[5] + ARROW_H),
+        ("down", 0.75, "↓", ARROW_H, ARROW_X + 0.93, ROW_Y[5] + ARROW_H),
+        ("right", 0.77, "→", ARROW_H, ARROW_X + 1.83, ROW_Y[5] + ARROW_H),
     ],
 ]
 
@@ -142,8 +177,7 @@ LAYER_TITLES = {
 
 SKIPPED_SECTIONS = {"ids", "global"}
 
-BASE_LABELS = {name: label for row in ROWS for name, _, label in row}
-KEY_ORDER = [name for row in ROWS for name, _, _ in row]
+BASE_LABELS = {spec[0]: spec[2] for row in ROWS for spec in row}
 
 
 @dataclass
@@ -242,7 +276,7 @@ def parse_config(text: str) -> dict[str, dict[str, Legend]]:
             continue
         key = normalize_key(mapping.group(1))
         if key not in BASE_LABELS:
-            warn(f"[{current}] {key} is not on the drawn 60% layout, skipped")
+            warn(f"[{current}] {key} is not on the drawn keyboard, skipped")
             continue
         sections[current][key] = parse_action(mapping.group(2))
     return sections
@@ -273,7 +307,7 @@ def build_layers(sections: dict[str, dict[str, Legend]]) -> dict[str, list[list]
         rows = []
         for row in ROWS:
             drawn = []
-            for key, _, base in row:
+            for key, _, base, *_ in row:
                 if key in mappings:
                     drawn.append(to_yaml_key(mappings[key]))
                 elif section != "main" and key in activators.get(section, []):
@@ -287,11 +321,21 @@ def build_layers(sections: dict[str, dict[str, Legend]]) -> dict[str, list[list]
 
 def physical_layout() -> dict:
     keys = []
-    for y, row in enumerate(ROWS):
+    for row_y, row in zip(ROW_Y, ROWS):
         x = 0.0
-        for _, w, _ in row:
-            keys.append({"x": x, "y": y, "w": w} if w != 1 else {"x": x, "y": y})
-            x += w
+        for _, w, _, *geometry in row:
+            h = geometry[0] if geometry else 1
+            if len(geometry) == 3:
+                key_x, key_y = geometry[1:]
+            else:
+                key_x, key_y = x, row_y
+                x += w
+            key = {"x": round(key_x, 3), "y": round(key_y, 3)}
+            if w != 1:
+                key["w"] = round(w, 3)
+            if h != 1:
+                key["h"] = h
+            keys.append(key)
     return {"layouts": {"LAYOUT": {"layout": keys}}}
 
 
