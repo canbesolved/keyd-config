@@ -45,6 +45,7 @@ registers as the modifier.*
 
 - `Q` → `Meta + ]` (Brave: tab search panel)
 - `W` → `Ctrl + W` (close tab)
+- `T` → `Alt + F4` (terminate window)
 - `C`, `V` → `Ctrl + C`, `Ctrl + V` (copy, paste)
 
 ### System / Misc
