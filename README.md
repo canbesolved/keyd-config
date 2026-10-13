@@ -104,6 +104,14 @@ uv run scripts/draw_layout.py
 Cursor and Claude Code hooks in this repo do this automatically when an agent
 edits `default.conf`. See [AGENTS.md](AGENTS.md) for details.
 
+## TODO
+
+- [x] Add Home, End hotkeys to space_layer
+- [x] Add Alt+F4 hotkey to space_layer
+- [x] Add PrtScn hotkey to altgr_layer
+- [ ] Add Cut function to space_layer
+- [ ] Add Hyphen to space_layer
+
 ## License
 
 MIT

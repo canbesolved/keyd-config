@@ -25,13 +25,12 @@ The layout has three parts:
 | Path | Purpose |
 | --- | --- |
 | `default.conf` | The keyd config, the single source of truth |
-| `README.md` | Human description of the layout, embeds the image |
+| `README.md` | Layout description, image and the TODO checklist |
 | `assets/layout.svg` | Generated picture (committed, never edit by hand) |
 | `scripts/draw_layout.py` | Generates `assets/layout.svg` from `default.conf` |
 | `scripts/hooks/regenerate-layout.sh` | Hook that reruns the generator |
 | `.cursor/hooks.json`, `.claude/settings.json` | Cursor and Claude hook setup |
 | `.cursor/rules/keyd-repo-docs.mdc` | Cursor rule: read the project docs |
-| `TODO.md` | Planned config changes as a checkbox list |
 | `build/` | Intermediate files (`keymap.yaml`, `thinkpad14.json`), gitignored |
 
 ## Editing `default.conf`
@@ -110,7 +109,7 @@ Lint every edited Markdown file with `markdownlint-cli2` (not
 `markdownlint`) and fix all issues before committing:
 
 ```bash
-markdownlint-cli2 README.md AGENTS.md TODO.md
+markdownlint-cli2 README.md AGENTS.md
 ```
 
 ## Commits and pull requests
