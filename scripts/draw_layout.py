@@ -30,52 +30,65 @@ OUTPUT_SVG = ROOT / "assets" / "layout.svg"
 
 MAX_LABEL_LEN = 6
 
-# Lenovo ThinkPad 14 (US ANSI) keyboard. Every key is a tuple
-# (keyd key name, width, base legend) with an optional height and an optional
-# absolute (x, y) position for keys that do not follow the row flow.
-FN_W = 15 / 17  # the function row has 17 narrower keys over the 15-unit width
+# Lenovo ThinkPad T14 Gen 4 (US ANSI) keyboard, measured from a photo. Every
+# key is a tuple (keyd key name, width, base legend) with an optional height
+# and an optional absolute (x, y) position for keys that do not follow the row
+# flow. The board is 14.6 units wide.
 FN_H = 0.7
+FN_SCALE = 0.974  # photo x positions were measured against a 15-unit board
 ROW_Y = [0.0, 0.85, 1.85, 2.85, 3.85, 4.85]
 ARROW_X = 12.0
 ARROW_H = 0.5
 
+# Function row: Esc, three groups of four F keys, then Home/End/Insert/Delete.
+FN_ROW = [
+    ("esc", 1.1, "Esc", 0.0),
+    *[
+        (f"f{n}", 0.78, f"F{n}", x)
+        for n, x in enumerate(
+            [1.25, 2.07, 2.88, 3.7, 4.6, 5.42, 6.24, 7.06, 8.0, 8.82, 9.63, 10.45],
+            start=1,
+        )
+    ],
+    ("home", 0.8, "Home", 11.4),
+    ("end", 0.8, "End", 12.2),
+    ("insert", 0.8, "Ins", 13.05),
+    ("delete", 1.15, "Del", 13.85),
+]
+
 ROWS: list[list[tuple]] = [
-    [("esc", FN_W, "Esc", FN_H)]
-    + [(f"f{n}", FN_W, f"F{n}", FN_H) for n in range(1, 13)]
-    + [
-        ("home", FN_W, "Home", FN_H),
-        ("end", FN_W, "End", FN_H),
-        ("insert", FN_W, "Ins", FN_H),
-        ("delete", FN_W, "Del", FN_H),
+    [
+        (name, round(w * FN_SCALE, 3), label, FN_H, round(x * FN_SCALE, 3), ROW_Y[0])
+        for name, w, label, x in FN_ROW
     ],
     [("grave", 1, "`")]
     + [(c, 1, c) for c in "1234567890"]
-    + [("minus", 1, "-"), ("equal", 1, "="), ("backspace", 2, "Bksp")],
-    [("tab", 1.5, "Tab")]
+    + [("minus", 1, "-"), ("equal", 1, "="), ("backspace", 1.6, "Bksp")],
+    [("tab", 1.4, "Tab")]
     + [(c, 1, c.upper()) for c in "qwertyuiop"]
-    + [("leftbrace", 1, "["), ("rightbrace", 1, "]"), ("backslash", 1.5, "\\")],
-    [("capslock", 1.75, "Caps")]
+    + [("leftbrace", 1, "["), ("rightbrace", 1, "]"), ("backslash", 1.2, "\\")],
+    [("capslock", 1.6, "Caps")]
     + [(c, 1, c.upper()) for c in "asdfghjkl"]
-    + [("semicolon", 1, ";"), ("apostrophe", 1, "'"), ("enter", 2.25, "Enter")],
-    [("leftshift", 2.25, "Shift")]
+    + [("semicolon", 1, ";"), ("apostrophe", 1, "'"), ("enter", 2, "Enter")],
+    [("leftshift", 2.2, "Shift")]
     + [(c, 1, c.upper()) for c in "zxcvbnm"]
-    + [("comma", 1, ","), ("dot", 1, "."), ("slash", 1, "/"), ("rightshift", 2.75, "Shift")],
+    + [("comma", 1, ","), ("dot", 1, "."), ("slash", 1, "/"), ("rightshift", 2.4, "Shift")],
     [
-        ("fn", 1.25, "Fn"),
-        ("leftcontrol", 1.25, "Ctrl"),
-        ("leftmeta", 1.25, "Meta"),
-        ("leftalt", 1.25, "Alt"),
-        ("space", 4, ""),
-        ("rightalt", 1, "AltGr"),
-        ("sysrq", 1, "PrtSc"),
-        ("rightcontrol", 1, "Ctrl"),
+        ("fn", 1.03, "Fn"),
+        ("leftcontrol", 1.26, "Ctrl"),
+        ("leftmeta", 1, "Meta"),
+        ("leftalt", 1, "Alt"),
+        ("space", 5.06, ""),
+        ("rightalt", 0.9, "AltGr"),
+        ("sysrq", 0.89, "PrtSc"),
+        ("rightcontrol", 0.86, "Ctrl"),
         # Inverted-T arrow cluster: PgUp / Up / PgDn above Left / Down / Right.
-        ("pageup", 1, "PgUp", ARROW_H, ARROW_X, ROW_Y[5]),
-        ("up", 1, "↑", ARROW_H, ARROW_X + 1, ROW_Y[5]),
-        ("pagedown", 1, "PgDn", ARROW_H, ARROW_X + 2, ROW_Y[5]),
-        ("left", 1, "←", ARROW_H, ARROW_X, ROW_Y[5] + ARROW_H),
-        ("down", 1, "↓", ARROW_H, ARROW_X + 1, ROW_Y[5] + ARROW_H),
-        ("right", 1, "→", ARROW_H, ARROW_X + 2, ROW_Y[5] + ARROW_H),
+        ("pageup", 0.77, "PgUp", ARROW_H, ARROW_X, ROW_Y[5]),
+        ("up", 0.75, "↑", ARROW_H, ARROW_X + 0.93, ROW_Y[5]),
+        ("pagedown", 0.77, "PgDn", ARROW_H, ARROW_X + 1.83, ROW_Y[5]),
+        ("left", 0.77, "←", ARROW_H, ARROW_X, ROW_Y[5] + ARROW_H),
+        ("down", 0.75, "↓", ARROW_H, ARROW_X + 0.93, ROW_Y[5] + ARROW_H),
+        ("right", 0.77, "→", ARROW_H, ARROW_X + 1.83, ROW_Y[5] + ARROW_H),
     ],
 ]
 

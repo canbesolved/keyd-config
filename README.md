@@ -5,8 +5,8 @@ improve ergonomics, and maximize productivity.
 
 ![Keyboard layout](assets/layout.svg)
 
-*The picture follows the Lenovo ThinkPad 14 (US) keyboard. Other models may
-differ slightly.*
+*The picture follows the Lenovo ThinkPad T14 Gen 4 (US) keyboard.
+Other models may differ slightly.*
 
 ## Layers
 

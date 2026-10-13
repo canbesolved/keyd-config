@@ -60,7 +60,7 @@ cannot parse keyd configs, so `scripts/draw_layout.py` does it:
    combos such as `M-f1` get a friendly name with the shortcut shown small on
    top, plain keys get short labels. The key that activates a layer is
    highlighted as held in that layer.
-3. Writes a Lenovo ThinkPad 14 (US ANSI) physical layout
+3. Writes a Lenovo ThinkPad T14 Gen 4 (US ANSI) physical layout
    (`build/thinkpad14.json`, QMK `info.json` format) and the keymap
    (`build/keymap.yaml`), then runs `keymap draw` to produce
    `assets/layout.svg`. The SVG follows the viewer's light/dark theme.
@@ -90,11 +90,11 @@ about 6 characters per word, one word per friendly name (keymap-drawer wraps
 on spaces). The script prints a warning for labels that are too long and for
 config keys that are not on the drawn layout.
 
-The picture follows the Lenovo ThinkPad 14 US keyboard: half-height function
-row, `Fn` key (not visible to keyd), `PrtSc` (`sysrq`) next to `Right Alt` and
-the inverted-T arrow cluster with `PgUp`/`PgDn`. Other ThinkPad generations
-may differ slightly. Its geometry is the `ROWS` table in
-`scripts/draw_layout.py`.
+The picture follows the Lenovo ThinkPad T14 Gen 4 US keyboard (measured from a
+photo): half-height function row in groups of four, `Fn` key (not visible to
+keyd), `PrtSc` (`sysrq`) next to `Right Alt` and the inverted-T arrow cluster
+with `PgUp`/`PgDn`. Other ThinkPad models may differ. Its geometry is the
+`ROWS` table in `scripts/draw_layout.py`.
 
 ### Hooks
 
