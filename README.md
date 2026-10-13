@@ -50,12 +50,12 @@ registers as the modifier.*
 ### System / Misc
 
 - `M` → `ScrollLock` (voice input using voxtype)
-- `SysRq` → `PrintScreen` (screenshot)
 
 ## RightAlt layer
 
 ### System
 
+- `SysRq` → `PrintScreen` (screenshot)
 - `O` → `Meta + L` (lock screen)
 - `/` → `Meta + /` (suspend)
 
