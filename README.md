@@ -49,7 +49,8 @@ registers as the modifier.*
 
 ### System / Misc
 
-- `M` → `ScrollLock` (voice input using voxtype)
+- `N` → `ScrollLock` (voice input using voxtype)
+- `M`, `,` → scroll down, scroll up (repeats while held)
 
 ## RightAlt layer
 
