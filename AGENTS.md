@@ -31,7 +31,19 @@ The layout has three parts:
 | `scripts/hooks/regenerate-layout.sh` | Hook that reruns the generator |
 | `.cursor/hooks.json`, `.claude/settings.json` | Cursor and Claude hook setup |
 | `.cursor/rules/keyd-repo-docs.mdc` | Cursor rule: read the project docs |
+| `reference/` | Cloned keyd source and docs, gitignored |
 | `build/` | Intermediate files (`keymap.yaml`, `thinkpad14.json`), gitignored |
+
+## keyd reference
+
+For keyd behaviour and syntax, read `reference/` (a clone of the keyd
+repository, gitignored) instead of searching the system for man pages:
+
+- `reference/docs/keyd.scdoc`: the manual (actions, layers, options).
+- `reference/docs/CHANGELOG.md`: features by version.
+- `reference/docs/DESIGN.md`: how keyd works internally.
+- `reference/examples/`: sample configs.
+- `reference/src/`: the C source, for details the docs leave out.
 
 ## Editing `default.conf`
 
