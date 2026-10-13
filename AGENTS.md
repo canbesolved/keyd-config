@@ -104,6 +104,15 @@ regenerates the image only when `default.conf` or `scripts/draw_layout.py`
 was edited and never blocks the edit. Edits made outside an agent do not
 trigger it; run the generator yourself before committing.
 
+## Markdown
+
+Lint every edited Markdown file with `markdownlint-cli2` (not
+`markdownlint`) and fix all issues before committing:
+
+```bash
+markdownlint-cli2 README.md AGENTS.md TODO.md
+```
+
 ## Commits and pull requests
 
 - Do not add a `Co-Authored-By` trailer to commit messages.
