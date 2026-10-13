@@ -1,6 +1,0 @@
----
-description: Use the project docs
-alwaysApply: true
----
-
-When the question depends on project behavior, APIs, or conventions, read the relevant files under @keyd-proj-docs/ before answering.
