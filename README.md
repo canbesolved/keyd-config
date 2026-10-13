@@ -48,6 +48,10 @@ registers as the modifier.*
 - `T` → `Alt + F4` (terminate window)
 - `C`, `V`, `X` → `Ctrl + C`, `Ctrl + V`, `Ctrl + X` (copy, paste, cut)
 
+### Symbols
+
+- `I` → `-` (hyphen)
+
 ### System / Misc
 
 - `N` → `ScrollLock` (voice input using voxtype)
@@ -110,7 +114,7 @@ edits `default.conf`. See [AGENTS.md](AGENTS.md) for details.
 - [x] Add Alt+F4 hotkey to space_layer
 - [x] Add PrtScn hotkey to altgr_layer
 - [x] Add Cut function to space_layer
-- [ ] Add Hyphen to space_layer
+- [x] Add Hyphen to space_layer
 
 ## License
 
