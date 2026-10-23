@@ -18,6 +18,9 @@ Other models may differ slightly.*
   shortcut keys; tap for a regular space. Within 150ms of the previous
   keypress it is always a plain space, so fast typing never triggers the
   layer
+- **Left Shift**: Tap for `Meta`; hold for `Shift`
+- **Right Shift**: Tap to change keyboard layout (`Meta + Space`); hold for
+  `Shift`
 - **Left Alt**: Tap to launch KRunner (`Alt + Space`); hold for `Alt`
 - **Right Alt (AltGr)**: Uses `Right Alt` on hold to access media controls and
   system actions
@@ -25,11 +28,6 @@ Other models may differ slightly.*
 *Note: HRM and Space use custom timeouts. A tap (< 150ms) registers as a
 character. Holding (> 200ms) or pressing in combination with another key
 registers as the modifier.*
-
-## Global Bindings
-
-- `SysRq` (`PrtSc` on Lenovo ThinkPad) → `Meta + Space` (change keyboard
-  layout)
 
 ## Space Layer
 
