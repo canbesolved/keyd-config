@@ -119,6 +119,7 @@ COMBO_PREFIXES = {"M": "Meta", "A": "Alt", "C": "Ctrl", "S": "Shift", "G": "AltG
 # Legends for keys that appear as actions (right-hand side of a mapping).
 ACTION_LABELS = {
     "esc": "Esc",
+    "leftmeta": "Meta",
     "enter": "Enter",
     "backspace": "Bksp",
     "delete": "Del",
@@ -242,6 +243,8 @@ def parse_action(action: str) -> Legend:
         if name == "overloadi":
             tap, hold = parse_action(args[0]), parse_action(args[1])
             return Legend(t=tap.t, s=tap.s, h=hold.h or hold.t, hold_target=hold.hold_target)
+        if name == "macro" and " " not in args[0]:
+            return parse_action(args[0])
         if name == "macro2":
             return parse_action(args[2])
         if name == "layer":

@@ -13,7 +13,8 @@ The layout has three parts:
   Meta/Alt/Ctrl/Shift on `A S D F` and `J K L ;`), `CapsLock` = Esc on tap /
   Ctrl on hold, `Left Alt` = KRunner (`Alt+Space`) on tap / Alt on hold,
   `Space` = space layer on hold, `Right Alt` = AltGr layer on hold,
-  `SysRq` = keyboard-layout switch (`Meta+Space`).
+  `Left Shift` = Meta on tap / Shift on hold, `Right Shift` =
+  keyboard-layout switch (`Meta+Space`) on tap / Shift on hold.
 - **`[space_layer]`**: vim-style arrows, page up/down,
   Enter/Backspace/Delete, browser tab and clipboard shortcuts, dictation
   toggle, hyphen.
