@@ -43,6 +43,7 @@ registers as the modifier.*
 
 - `Q` → `Meta + ]` (Brave: tab search panel)
 - `W` → `Ctrl + W` (close tab)
+- `R` → `Ctrl + R` (reload page)
 - `T` → `Alt + F4` (terminate window)
 - `C`, `V`, `X` → `Ctrl + C`, `Ctrl + V`, `Ctrl + X` (copy, paste, cut)
 
