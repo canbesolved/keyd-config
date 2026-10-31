@@ -120,7 +120,6 @@ COMBO_PREFIXES = {"M": "Meta", "A": "Alt", "C": "Ctrl", "S": "Shift", "G": "AltG
 ACTION_LABELS = {
     "esc": "Esc",
     "leftmeta": "Meta",
-    "leftalt": "Alt",
     "enter": "Enter",
     "backspace": "Bksp",
     "delete": "Del",
@@ -168,9 +167,6 @@ COMBO_LABELS = {
     "C-v": "Paste",
     "C-x": "Cut",
 }
-
-# Names for keys pressed together in macro(a+b); one short word each.
-SIMULTANEOUS_LABELS = {"leftalt+leftmeta": "AltMet"}
 
 # Hold legends for keyd layers (sections other than [main]).
 LAYER_HOLD_LABELS = {
@@ -249,9 +245,6 @@ def parse_action(action: str) -> Legend:
             tap, hold = parse_action(args[0]), parse_action(args[1])
             return Legend(t=tap.t, s=tap.s, h=hold.h or hold.t, hold_target=hold.hold_target)
         if name == "macro" and " " not in args[0]:
-            if "+" in args[0]:
-                joined = "+".join(map(key_label, args[0].split("+")))
-                return Legend(t=SIMULTANEOUS_LABELS.get(args[0], joined))
             return parse_action(args[0])
         if name == "macro2":
             return parse_action(args[2])
