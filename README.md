@@ -18,10 +18,12 @@ Other models may differ slightly.*
   shortcut keys; tap for a regular space. Within 150ms of the previous
   keypress it is always a plain space, so fast typing never triggers the
   layer
-- **Left Shift**: Tap for `Meta`; hold for `Shift`
+- **Left Shift**: Tap to launch tynex (task switcher) (`Alt + Space`); hold
+  for `Shift`
 - **Right Shift**: Tap to change keyboard layout (`Meta + Space`); hold for
   `Shift`
-- **Left Alt**: Tap to launch KRunner (`Alt + Space`); hold for `Alt`
+- **Left Alt**: Tap to launch tynex (task switcher) (`Alt + Space`); hold
+  for `Alt`
 - **Right Alt (AltGr)**: Uses `Right Alt` on hold to access media controls and
   system actions
 
@@ -76,7 +78,7 @@ registers as the modifier.*
 
 - Linux environment
 - [keyd](https://github.com/rvaiya/keyd)
-- KDE Plasma (for KRunner, lock screen and suspend shortcuts)
+- KDE Plasma (for tynex (task switcher), lock screen and suspend shortcuts)
 
 ## Installation
 
