@@ -18,7 +18,7 @@ Other models may differ slightly.*
   shortcut keys; tap for a regular space. Within 150ms of the previous
   keypress it is always a plain space, so fast typing never triggers the
   layer
-- **Left Shift**: Tap for `Meta`; hold for `Shift`
+- **Left Shift**: Tap for `Alt + Meta`; hold for `Shift`
 - **Right Shift**: Tap to change keyboard layout (`Meta + Space`); hold for
   `Shift`
 - **Left Alt**: Tap to launch KRunner (`Alt + Space`); hold for `Alt`
